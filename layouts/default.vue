@@ -2,6 +2,8 @@
   <v-app>
     <AppNavigation />
 
+    <Paralax />
+
     <v-content>
       <nuxt />
       <!-- <v-container class="fill-height" fluid>
@@ -35,17 +37,19 @@
       </v-container>-->
     </v-content>
 
-    <v-footer color="indigo" app>
-      <span class="white--text">&copy; 2019</span>
-    </v-footer>
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import AppNavigation from '@/components/main/Navigation'
+import Paralax from '@/components/main/Paralax'
+import Footer from '@/components/Footer'
 export default {
   components: {
-    AppNavigation
+    AppNavigation,
+    Paralax,
+    Footer
   }
 }
 </script>

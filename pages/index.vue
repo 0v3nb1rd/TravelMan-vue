@@ -1,5 +1,7 @@
 <template>
-  <section class="container"></section>
+  <section class="container index-page">
+    <h1>Index page</h1>
+  </section>
 
   <!-- <v-layout
     column
@@ -86,3 +88,9 @@ export default {
   components: {}
 }
 </script>
+
+<style lang="scss" scoped>
+.index-page {
+  // height: 200vh;
+}
+</style>
