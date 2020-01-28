@@ -25,7 +25,7 @@ module.exports = {
     ]
   },
 
-  loading: { color: '#fff' },
+  loading: { color: 'green' },
 
   css: ['~/assets/main.scss'],
 
@@ -43,7 +43,8 @@ module.exports = {
       // dark: true,
       themes: {
         light: {
-          primary: '#1c2026'
+          primary: '#1c2026',
+          accent: '#E0575C'
         }
         //   dark: {
         //     primary: colors.blue.darken2,
