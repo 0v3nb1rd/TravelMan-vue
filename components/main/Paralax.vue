@@ -24,5 +24,6 @@
   line-height: 17px;
   letter-spacing: 0.25px;
   font-weight: 500;
+  opacity: 0.6;
 }
 </style>
