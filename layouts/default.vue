@@ -4,7 +4,7 @@
 
     <Paralax />
 
-    <v-content class="pa-0">
+    <v-content class="indigo lighten-5 pa-0">
       <nuxt />
     </v-content>
 
