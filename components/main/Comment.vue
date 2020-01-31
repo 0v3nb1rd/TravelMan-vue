@@ -21,9 +21,9 @@ export default {
 <style lang="scss" scoped>
 .comment {
   margin-bottom: 1rem;
-  max-width: 1000px;
+  // max-width: 1000px;
   padding: 20px;
-  margin: 0 auto;
+  // margin: 0 auto;
   margin-bottom: 1rem;
 
   &__header {

@@ -83,7 +83,7 @@
         <div class="comments" v-if="true">
           <Comment v-for="(comment, i) in 4" :key="i" :comment="comment" />
         </div>
-        <div class="text-center" v-else>Нет комментариев</div>
+        <v-alert border="bottom" text color="blue" v-else>Комментариев нет ;(</v-alert>
       </footer>
     </v-sheet>
   </v-container>
@@ -132,5 +132,10 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
+}
+footer {
+  padding: 2rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 </style>
