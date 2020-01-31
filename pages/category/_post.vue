@@ -1,14 +1,7 @@
 <template>
-  <!--Card content-->
   <v-container pt-0>
-    <v-sheet tag="section" elevation="2" class="text-center mx-auto justify-center post">
-      <!--Title-->
-      <!-- <v-card-actions class="justify-center buttons__nav"> -->
-      <!-- <v-btn color="error" large>Primary button</v-btn>
-        <v-btn color="success" large>Secondary button</v-btn>
-      <v-btn color="primary" large>Default button</v-btn>-->
-      <!-- <v-badge avatar bordered overlap :content="messages" :value="messages" color="green"> -->
-      <div class="post__action">
+    <v-sheet tag="article" elevation="2" class="mx-auto justify-center post">
+      <header class="post__action">
         <v-badge
           class="post__heart"
           :value="hover"
@@ -24,15 +17,12 @@
         </v-badge>
         <div class="post__buttons">
           <v-btn color="#2196f3" class="white--text" large>Primary button</v-btn>
-          <!-- <v-btn color="success" large>Secondary button</v-btn> -->
           <v-btn color="success" large>Default button</v-btn>
         </div>
-      </div>
-
-      <!-- </v-card-actions> -->
+      </header>
 
       <v-divider inset class="mx-auto mb-10"></v-divider>
-      <article class="post__description">
+      <main class="post__description">
         <h4 class="card-title">
           <strong>My adventure</strong>
         </h4>
@@ -85,15 +75,29 @@
           Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
           laudantium, totam rem aperiam.
         </p>
-      </article>
+      </main>
+
+      <footer>
+        <!-- Form -->
+
+        <div class="comments" v-if="true">
+          <Comment v-for="(comment, i) in 4" :key="i" :comment="comment" />
+        </div>
+        <div class="text-center" v-else>Нет комментариев</div>
+      </footer>
     </v-sheet>
   </v-container>
-
-  <!--/.Card content-->
 </template>
 
 <script>
+import Comment from '@/components/main/Comment'
 export default {
+  components: {
+    Comment
+  },
+  validate({ params }) {
+    return Boolean(params.post)
+  },
   data: () => ({
     hover: false
   })
@@ -103,6 +107,7 @@ export default {
 <style lang="scss" scoped>
 .post {
   margin-top: -64px;
+  text-align: center;
 
   &__heart {
     top: -32px;
