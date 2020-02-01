@@ -79,7 +79,7 @@
 
       <footer>
         <!-- Form -->
-
+        <CommentForm />
         <div class="comments" v-if="true">
           <Comment v-for="(comment, i) in 4" :key="i" :comment="comment" />
         </div>
@@ -91,9 +91,11 @@
 
 <script>
 import Comment from '@/components/main/Comment'
+import CommentForm from '@/components/main/CommentForm'
 export default {
   components: {
-    Comment
+    Comment,
+    CommentForm
   },
   validate({ params }) {
     return Boolean(params.post)
