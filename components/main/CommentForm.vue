@@ -1,5 +1,7 @@
 <template>
-  <v-form ref="form" v-model="valid" lazy-validation class="text-left">
+  <v-form ref="form" v-model="valid" class="text-left">
+    <h2 class>Добавить комментарий</h2>
+
     <v-text-field label="Ваше имя" v-model="name" :rules="nameRules" required></v-text-field>
 
     <v-textarea
@@ -19,6 +21,7 @@
       :disabled="!valid"
       color="success"
       rounded
+      :loading="loading"
     >Добавить комментарий</v-btn>
   </v-form>
 </template>
@@ -26,6 +29,7 @@
 <script>
 export default {
   data: () => ({
+    loading: false,
     valid: true,
     name: '',
     nameRules: [v => !!v || 'Имя не должно быть пустым'],
@@ -33,14 +37,25 @@ export default {
     text: '',
     textRules: [
       v => !!v || 'Введите ваш комментарий',
-      v => v.length <= 10 || 'Name must be less than 10 characters'
+      v => v.length <= 200 || 'Текст должен иметь максимум 200символов'
     ]
   }),
   methods: {
     validate() {
       if (this.$refs.form.validate()) {
-        this.snackbar = true
-        console.log('object')
+        this.loading = true
+        const formData = {
+          name: this.name,
+          text: this.text,
+          postId: ''
+        }
+        try {
+          setTimeout(_ => {
+            this.$emit('created')
+          }, 2000)
+        } catch (e) {
+          // this.loading = false
+        }
       }
     }
   }

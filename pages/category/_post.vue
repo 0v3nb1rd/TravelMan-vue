@@ -79,7 +79,8 @@
 
       <footer>
         <!-- Form -->
-        <CommentForm />
+        <CommentForm v-if="canAddComment" @created="createCommenHendler" />
+        <v-snackbar top v-model="snackbar" color="success">{{ textadd }}</v-snackbar>
         <div class="comments" v-if="true">
           <Comment v-for="(comment, i) in 4" :key="i" :comment="comment" />
         </div>
@@ -97,12 +98,18 @@ export default {
     Comment,
     CommentForm
   },
-  validate({ params }) {
-    return Boolean(params.post)
-  },
   data: () => ({
-    hover: false
-  })
+    snackbar: false,
+    textadd: 'Спасибо коммент додан',
+    hover: false,
+    canAddComment: true
+  }),
+  methods: {
+    createCommenHendler() {
+      this.canAddComment = false
+      this.snackbar = true
+    }
+  }
 }
 </script>
 
