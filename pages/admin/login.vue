@@ -8,30 +8,33 @@
           </v-toolbar>
 
           <v-card-text>
-            <v-form @submit.native.prevent="onSubmit" ref="form">
+            <v-form v-model="valid" ref="form">
               <v-text-field
                 label="Login"
-                name="login"
+                v-model="login"
+                :rules="loginRules"
+                required
                 prepend-icon="mdi-account"
                 type="text"
-                required
               />
 
               <v-text-field
-                id="password"
                 label="Password"
-                name="password"
+                v-model="password"
+                :rules="passwordRules"
+                required
                 prepend-icon="mdi-lock"
                 type="password"
               />
-              <v-btn type="submit" color="primary">Login</v-btn>
+              <v-btn
+                @click="validate"
+                rounded
+                :disabled="!valid"
+                color="primary"
+                :loading="loading"
+              >Login</v-btn>
             </v-form>
           </v-card-text>
-
-          <v-card-actions>
-            <v-spacer />
-            <!-- <v-btn color="primary">Login</v-btn> -->
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -40,33 +43,25 @@
 
 <script>
 export default {
+  layout: 'empty',
   data: () => ({
     loading: false,
     valid: true,
-    name: '',
-    nameRules: [v => !!v || 'Имя не должно быть пустым'],
-    // login: '',
-    // loginRules: [v => !!v || 'Логин не должeн быть пустым'],
 
+    login: '',
+    loginRules: [v => !!v || 'Имя не должно быть пустым'],
     password: '',
-    passwordRules: [v => !!v || 'Введите пароль']
+    passwordRules: [v => !!v || 'Имя не должно быть пустым']
   }),
   methods: {
-    onSubmit(e) {
-      console.log('e')
+    validate() {
+      // if (this.$refs.form.validate()) {
+      if (this.$refs.form.validate()) {
+        this.loading = true
+        setTimeout(_ => console.log(this.login, this.password), 5000)
+      }
     }
-    // validate() {
-    //   if (this.$refs.form.validate()) {
-    //     console.log('validate')
-    //   }
-    // }
   }
-}
-</script>
-
-<script>
-export default {
-  layout: 'empty'
 }
 </script>
 
