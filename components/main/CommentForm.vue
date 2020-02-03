@@ -13,8 +13,6 @@
       auto-grow
     ></v-textarea>
 
-    <!-- <v-checkbox :rules="[v => !!v || 'You must agree to continue!']" label="Do you agree?" required></v-checkbox> -->
-
     <v-btn
       class="mb-8"
       @click="validate"
@@ -54,7 +52,7 @@ export default {
             this.$emit('created')
           }, 2000)
         } catch (e) {
-          // this.loading = false
+          this.loading = false
         }
       }
     }
