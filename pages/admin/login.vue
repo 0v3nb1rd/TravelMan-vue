@@ -2,11 +2,7 @@
   <v-container class="fill-height" fluid>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-alert v-model="alert" dense type="info">
-          Для начала нужно войти
-          <strong>type</strong> of info
-        </v-alert>
-
+        <v-snackbar top v-model="snackbar" color="blue">{{ message }}</v-snackbar>
         <v-card class="elevation-12">
           <v-toolbar color="primary" dark flat>
             <v-toolbar-title class="mx-auto">Login form</v-toolbar-title>
@@ -52,7 +48,8 @@ export default {
   data: () => ({
     loading: false,
     valid: true,
-    alert: false,
+    snackbar: false,
+    message: '',
 
     login: '',
     loginRules: [v => !!v || 'Имя не должно быть пустым'],
@@ -61,11 +58,18 @@ export default {
   }),
   mounted() {
     const { message } = this.$route.query
-    console.log(message)
+    switch (message) {
+      case 'login':
+        this.message = 'Для начала нужно войти'
+        this.snackbar = true
+        break
+      case 'logout':
+        this.message = 'Вы успешно вышли из системы'
+        this.snackbar = true
+        break
+    }
     if (message === 'login') {
-      console.log('object')
-      //   // debugger
-      this.alert = true
+      this.snackbar = true
     }
   },
   methods: {
