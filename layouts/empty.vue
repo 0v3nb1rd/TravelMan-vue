@@ -1,13 +1,28 @@
 <template>
-  <!-- <div class="empty-layout"> -->
   <v-app id="inspire">
+    <v-snackbar top v-model="snackbar" color="blue">{{ message }}</v-snackbar>
     <nuxt />
   </v-app>
-  <!-- </div> -->
 </template>
 
 <script>
-export default {}
+export default {
+  data: () => ({
+    snackbar: false,
+    message: ''
+  }),
+  computed: {
+    error() {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error(val) {
+      this.message = val
+      this.snackbar = true
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
