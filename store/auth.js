@@ -28,6 +28,13 @@ export const actions = {
   },
   logout({ commit }) {
     commit('clearToken')
+  },
+  async createUser({ commit }, formData) {
+    try {
+      console.log('CreateUser', formData)
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
