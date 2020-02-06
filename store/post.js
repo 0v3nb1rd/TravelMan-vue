@@ -27,7 +27,7 @@ export const actions = {
       }, 1000)
     })
   },
-  remove({}, id) {
+  remove({}, { id, text }) {
     console.log(id)
   },
   async fetchAdminById({}, id) {
@@ -39,6 +39,13 @@ export const actions = {
   },
   update({}, formData) {
     console.log('Store Ok', formData)
+  },
+  async create({}, { title, text }) {
+    return await new Promise(resolve => {
+      setTimeout(() => {
+        resolve(console.log('Created!'))
+      }, 1000)
+    })
   }
 }
 

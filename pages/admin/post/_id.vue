@@ -99,14 +99,6 @@ export default {
           this.loading = false
         }
       }
-      // this.$refs.form.validate(valid => {
-      //   console.log('object')
-      //   if (valid) {
-      //     console.log('valid')
-      //   } else {
-      //     console.log('not valid')
-      //   }
-      // })
     }
   }
 }
