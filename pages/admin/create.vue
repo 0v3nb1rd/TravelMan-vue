@@ -16,7 +16,17 @@
       outlined
       no-resize
       rows="10"
+      clear-icon=""
     ></v-textarea>
+
+    <v-file-input
+      flat
+      single-line
+      show-size
+      v-model="files"
+      :rules="titleRules"
+      placeholder="Select your photo"
+    ></v-file-input>
 
     <v-dialog class="d-flex justify-space-between" v-model="dialog">
       <template v-slot:activator="{ on }">
@@ -62,6 +72,9 @@ export default {
     text: '',
     textRules: [v => !!v || "Text can't be empty"],
 
+    files: null,
+    filesRules: [v => !!v || 'You mast add picture.!'],
+
     breadcrumbs: [
       {
         text: 'Посты',
@@ -75,25 +88,32 @@ export default {
       }
     ]
   }),
+
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
         this.loading = true
         const formData = {
           title: this.title,
-          text: this.text
+          text: this.text,
+          image: this.files
         }
         try {
           await this.$store.dispatch('post/create', formData)
           this.title = ''
           this.text = ''
+          this.files = null
+
           this.message = 'Post is olready created.! :)'
           this.snackbar = true
         } catch (e) {
-          console.log(e)
+          // console.log(e)
         } finally {
           this.loading = false
+          // this.valid = false
         }
+      } else {
+        console.log('not valid')
       }
     }
   }
