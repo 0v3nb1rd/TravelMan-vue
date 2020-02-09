@@ -15,7 +15,7 @@ module.exports.login = async (req, res) => {
       const token = jwt.sign(
         {
           login: candidate.login,
-          userid: candidate._id
+          userId: candidate._id
         },
         keys.JWT,
         { expiresIn: 60 * 60 }
