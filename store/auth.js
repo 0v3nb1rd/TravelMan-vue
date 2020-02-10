@@ -1,5 +1,5 @@
 export const state = () => ({
-  token: true
+  token: null //admin show
 })
 
 export const mutations = {
@@ -17,8 +17,11 @@ export const actions = {
       // const token = await new Promise((resolve, reject) => {
       //   setTimeout(() => resolve('travel-token'), 2000)
       // })
-      const { token } = this.$axios.$post('/api/auth/admin/login', formData)
-      console.log('token', token)
+      const { token } = await this.$axios.$post(
+        '/api/auth/admin/login',
+        formData
+      )
+      // console.log('token', token)
       dispatch('setToken', token)
     } catch (e) {
       commit('setError', e, { root: true })

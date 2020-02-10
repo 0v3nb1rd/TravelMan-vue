@@ -71,6 +71,17 @@ export default {
   data: () => ({
     drawer: null,
     dialog: false
-  })
+  }),
+  computed: {
+    error() {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error(val) {
+      this.message = val.response.data.message
+      this.snackbar = true
+    }
+  }
 }
 </script>

@@ -9,7 +9,7 @@ router.post('/admin/login', login)
 // /api/auth/admin/create
 router.post(
   '/admin/create',
-  passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false }), // add passport
   createUser
 )
 

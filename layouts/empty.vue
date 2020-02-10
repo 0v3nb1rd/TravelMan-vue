@@ -18,7 +18,7 @@ export default {
   },
   watch: {
     error(val) {
-      this.message = val
+      this.message = val.response.data.message
       this.snackbar = true
     }
   }
