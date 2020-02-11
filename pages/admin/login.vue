@@ -67,6 +67,10 @@ export default {
         this.message = 'Вы успешно вышли из системы'
         this.snackbar = true
         break
+      case 'session':
+        this.message = 'Время сессии истекло, пожалуйста зайдите заново'
+        this.snackbar = true
+        break
     }
     if (message === 'login') {
       this.snackbar = true
