@@ -24,11 +24,12 @@
 
     <v-btn
       class="mb-8"
-      @click="validate"
+      @click.prevent="validate"
       :disabled="!valid"
       color="success"
       rounded
       :loading="loading"
+      type="submit"
     >Создать</v-btn>
   </v-form>
 </template>

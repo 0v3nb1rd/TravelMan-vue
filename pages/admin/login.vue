@@ -28,11 +28,12 @@
                 type="password"
               />
               <v-btn
-                @click="validate"
+                @click.prevent="validate"
                 rounded
                 :disabled="!valid"
                 color="primary"
                 :loading="loading"
+                type="submit"
               >Login</v-btn>
             </v-form>
           </v-card-text>
