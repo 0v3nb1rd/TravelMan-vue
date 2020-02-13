@@ -30,7 +30,8 @@
       rounded
       :loading="loading"
       type="submit"
-    >Создать</v-btn>
+      >Создать</v-btn
+    >
   </v-form>
 </template>
 
@@ -53,12 +54,11 @@ export default {
     async validate() {
       if (this.$refs.form.validate()) {
         this.loading = true
-
+        const formData = {
+          login: this.login,
+          password: this.password
+        }
         try {
-          const formData = {
-            login: this.login,
-            password: this.password
-          }
           await this.$store.dispatch('auth/createUser', formData)
           this.message = 'Новый пользуватель добавлен'
           this.snackbar = true
@@ -67,7 +67,7 @@ export default {
           this.loading = false
 
           // setTimeout(_ => {
-          //   this.$emit('created')
+          //   this.$emit('created', formData)
           // }, 2000)
         } catch (e) {
           this.loading = false
@@ -82,5 +82,5 @@ export default {
 .user-form {
   width: 500px;
   margin: 50px;
-}
-</style>>
+}</style
+>>

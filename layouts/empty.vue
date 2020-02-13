@@ -18,6 +18,7 @@ export default {
   },
   watch: {
     error(val) {
+      // console.log(val)
       this.message = val.response.data.message
       this.snackbar = true
     }
@@ -32,4 +33,4 @@ export default {
   width: 100%;
   padding-top: 4rem;
 }
-</style>>
+</style>

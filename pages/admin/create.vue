@@ -32,11 +32,12 @@
       <template v-slot:activator="{ on }">
         <div class="d-flex justify-space-between">
           <v-btn
-            @click="validate"
+            @click.prevent="validate"
             rounded
             :disabled="!valid"
             color="green"
             :loading="loading"
+            type="submit"
             >Создать пост</v-btn
           >
           <v-btn color="primary" rounded dark v-on="on">Предпросмотр</v-btn>
@@ -100,12 +101,11 @@ export default {
         }
         try {
           await this.$store.dispatch('post/create', formData)
+          this.message = 'Post is olready created.! :)'
+          this.snackbar = true
           this.title = ''
           this.text = ''
           this.files = null
-
-          this.message = 'Post is olready created.! :)'
-          this.snackbar = true
         } catch (e) {
           // console.log(e)
         } finally {
