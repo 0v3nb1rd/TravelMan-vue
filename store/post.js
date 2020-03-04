@@ -20,16 +20,32 @@ export const state = () => ({})
 export const mutations = {}
 
 export const actions = {
-  async fetchAdmin() {
-    return await new Promise(resolve => {
-      setTimeout(() => {
-        resolve(posts)
-      }, 1000)
-    })
+  async fetchAdmin({ commit }) {
+    try {
+      return await this.$axios.$get('/api/post/admin')
+    } catch (e) {
+      commit('setError', e, { root: true })
+      throw e
+    }
   },
-  remove({}, { id, text }) {
-    console.log(id)
+  async remove({ commit }, id) {
+    try {
+      return await this.$axios.$delete(`/api/post/admin/'${id}`)
+    } catch (e) {
+      commit('setError', e, { root: true })
+      throw e
+    }
   },
+  async update({ commit }, { id, text }) {
+    // console.log('Store Ok', formData)
+    try {
+      return await this.$axios.$put(`/api/post/admin/'${id}`, { text })
+    } catch (e) {
+      commit('setError', e, { root: true })
+      throw e
+    }
+  },
+
   async fetchAdminById({}, id) {
     return await new Promise(resolve => {
       setTimeout(() => {
@@ -37,9 +53,7 @@ export const actions = {
       }, 1000)
     })
   },
-  update({}, formData) {
-    console.log('Store Ok', formData)
-  },
+
   async create({ commit }, { title, text, image }) {
     try {
       const fd = new FormData()

@@ -123,6 +123,11 @@ export default {
     }
   }),
 
+  async asyncData({ store }) {
+    const posts = await store.dispatch('post/fetchAdmin')
+    return { posts }
+  },
+
   computed: {
     formTitle() {
       return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
@@ -225,11 +230,6 @@ export default {
     //   }
     //   this.close()
     // }
-  },
-
-  async asyncData({ store }) {
-    const posts = await store.dispatch('post/fetchAdmin')
-    return { posts }
   }
 }
 </script>

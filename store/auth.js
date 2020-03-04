@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode'
 
 export const state = () => ({
-  token: null //admin show
+  token: true //admin show
 })
 
 export const mutations = {
@@ -25,7 +25,7 @@ export const actions = {
         '/api/auth/admin/login',
         formData
       )
-      // console.log('token', token)
+      console.log('token', token)
       dispatch('setToken', token)
     } catch (e) {
       commit('setError', e, { root: true })
