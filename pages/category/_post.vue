@@ -83,14 +83,18 @@
 
       <footer>
         <!-- Form -->
-        <CommentForm v-if="canAddComment" @created="createCommenHendler" />
+        <CommentForm
+          v-if="canAddComment"
+          @created="createCommenHendler"
+          :postId="post._id"
+        />
         <v-snackbar top v-model="snackbar" color="success">{{
           textadd
         }}</v-snackbar>
         <div class="comments" v-if="post.comments.length">
           <Comment
             v-for="comment in post.comments"
-            :key="comment"
+            :key="comment._id"
             :comment="comment"
           />
         </div>
@@ -122,7 +126,8 @@ export default {
     canAddComment: true
   }),
   methods: {
-    createCommenHendler() {
+    createCommenHendler(comment) {
+      this.post.comments.unshift(comment)
       this.canAddComment = false
       this.snackbar = true
     }

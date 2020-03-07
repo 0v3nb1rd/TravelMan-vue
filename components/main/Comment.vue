@@ -1,20 +1,23 @@
 <template>
   <v-card class="comment yellow lighten-5">
     <div class="comment__header">
-      <span class="comment__name">Person name</span>
+      <span class="comment__name">{{ comment.name }}</span>
       <span>
         <v-icon>mdi-clock-outline</v-icon>
-        {{ new Date().toLocaleString()}}
+        {{ new Date(comment.date).toLocaleString() }}
       </span>
     </div>
-    <blockquote
-      class="comment__text blockquote"
-    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, laborum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, laborum?</blockquote>
+    <blockquote class="comment__text blockquote">{{ comment.text }}</blockquote>
   </v-card>
 </template>
 <script>
 export default {
-  props: ['comment']
+  props: {
+    comment: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>
 

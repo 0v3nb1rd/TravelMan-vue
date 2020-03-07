@@ -3,10 +3,11 @@ const Post = require('../models/post.model')
 
 module.exports.create = async (req, res) => {
   try {
+    const { name, text, postId } = req.body
     const comment = new Comment({
-      name: req.body.name,
-      text: req.body.text,
-      postId: req.body.postId
+      name,
+      text,
+      postId
     })
     await comment.save()
 

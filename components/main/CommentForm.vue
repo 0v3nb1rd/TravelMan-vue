@@ -2,7 +2,12 @@
   <v-form ref="form" v-model="valid" class="text-left">
     <h2 class>Добавить комментарий</h2>
 
-    <v-text-field label="Ваше имя" v-model="name" :rules="nameRules" required></v-text-field>
+    <v-text-field
+      label="Ваше имя"
+      v-model="name"
+      :rules="nameRules"
+      required
+    ></v-text-field>
 
     <v-textarea
       label="Текст комментария"
@@ -20,7 +25,8 @@
       color="success"
       rounded
       :loading="loading"
-    >Добавить комментарий</v-btn>
+      >Добавить комментарий</v-btn
+    >
   </v-form>
 </template>
 
@@ -38,19 +44,31 @@ export default {
       v => v.length <= 200 || 'Текст должен иметь максимум 200символов'
     ]
   }),
+  props: {
+    postId: {
+      type: String,
+      required: true
+    }
+  },
   methods: {
-    validate() {
+    async validate() {
       if (this.$refs.form.validate()) {
         this.loading = true
         const formData = {
           name: this.name,
           text: this.text,
-          postId: ''
+          postId: '',
+          postId: this.postId
         }
         try {
-          setTimeout(_ => {
-            this.$emit('created')
-          }, 2000)
+          const newComment = await this.$store.dispatch(
+            'comment/create',
+            formData
+          )
+          // this.$emit('created')
+          // setTimeout(_ => {
+          this.$emit('created', newComment)
+          // }, 2000)
         } catch (e) {
           this.loading = false
         }
@@ -60,5 +78,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
