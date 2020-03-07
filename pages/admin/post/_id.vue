@@ -1,3 +1,4 @@
+
 <template>
   <div class="page-wrap">
     <v-snackbar top v-model="snackbar">{{ message }}</v-snackbar>
@@ -56,7 +57,7 @@ export default {
   },
   async asyncData({ store, params }) {
     const post = await store.dispatch('post/fetchAdminById', params.id)
-    // console.log({ post })
+    // console.log( await store.dispatch('post/fetchAdminById', params.id );
     return { post }
   },
   data: () => ({
@@ -81,6 +82,9 @@ export default {
       }
     ]
   }),
+  mounted() {
+    this.text = this.post.text
+  },
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {

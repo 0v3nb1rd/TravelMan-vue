@@ -98,11 +98,11 @@ export default {
   data: () => ({
     dialog: false,
     headers: [
-      { text: 'ID', value: '_id' },
+      // { text: 'ID', value: '_id' },
       { text: 'Title', value: 'title' },
-      { text: 'Comments', value: 'comments' },
-      { text: 'Views', value: 'views' },
       { text: 'Date', value: 'date' },
+      { text: 'Views', value: 'views' },
+      { text: 'Comments', value: 'comments' },
       { text: 'Actions', value: 'action', sortable: false }
     ],
     desserts: [],
@@ -145,46 +145,6 @@ export default {
   // },
 
   methods: {
-    // initialize() {
-    //   this.desserts = [
-    //     {
-    //       _id: 'Frozen Yogurt',
-    //       title: 159,
-    //       views: 6.0,
-    //       comments: 24,
-    //       date: 4.0
-    //     },
-    //     {
-    //       _id: 'Ice cream sandwich',
-    //       title: 237,
-    //       views: 9.0,
-    //       comments: 37,
-    //       date: 4.3
-    //     },
-    //     {
-    //       _id: 'Eclair',
-    //       title: 262,
-    //       views: 16.0,
-    //       comments: 23,
-    //       date: 6.0
-    //     },
-    //     {
-    //       _id: 'Cupcake',
-    //       title: 305,
-    //       views: 3.7,
-    //       comments: 67,
-    //       date: 4.3
-    //     },
-    //     {
-    //       _id: 'Gingerbread',
-    //       title: 356,
-    //       views: 16.0,
-    //       comments: 49,
-    //       date: 3.9
-    //     }
-    //   ]
-    // },
-
     getColor(calories) {
       if (calories > 500) return 'green'
       else if (calories > 200) return 'orange'

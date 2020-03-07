@@ -30,7 +30,7 @@ export const actions = {
   },
   async remove({ commit }, id) {
     try {
-      return await this.$axios.$delete(`/api/post/admin/'${id}`)
+      return await this.$axios.$delete(`/api/post/admin/${id}`)
     } catch (e) {
       commit('setError', e, { root: true })
       throw e
@@ -39,19 +39,20 @@ export const actions = {
   async update({ commit }, { id, text }) {
     // console.log('Store Ok', formData)
     try {
-      return await this.$axios.$put(`/api/post/admin/'${id}`, { text })
+      return await this.$axios.$put(`/api/post/admin/${id}`, { text })
     } catch (e) {
       commit('setError', e, { root: true })
       throw e
     }
   },
 
-  async fetchAdminById({}, id) {
-    return await new Promise(resolve => {
-      setTimeout(() => {
-        resolve(posts.find(p => p._id === id))
-      }, 1000)
-    })
+  async fetchAdminById({ commit }, id) {
+    try {
+      return await this.$axios.$get(`/api/post/admin/${id}`)
+    } catch (e) {
+      commit('setError', e, { root: true })
+      throw e
+    }
   },
 
   async create({ commit }, { title, text, image }) {
