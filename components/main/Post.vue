@@ -26,7 +26,7 @@
   <v-card @click="openPost" class="post">
     <figure>
       <v-img
-        src="https://cdn.vuetifyjs.com/images/cards/house.jpg"
+        :src="post.ImageUrl"
         class="white--text align-end post__image"
         gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
         height="200px"
@@ -34,15 +34,19 @@
       <v-card-subtitle class="post__meta">
         <span class="post__date">
           <span>
-            27
+            {{ new Date(post.date).getDate() }}
             <em>мая</em>
           </span>
         </span>
         <span class="post__category">Путишествие</span>
       </v-card-subtitle>
       <figcaption class="post__description">
-        <h3>Pre-fab homes</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nesciunt molestiae debitis impedit fugiat itaque hic consequuntur a explicabo, maiores unde odio magni excepturi soluta...</p>
+        <h3>{{ post.title }}</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+          nesciunt molestiae debitis impedit fugiat itaque hic consequuntur a
+          explicabo, maiores unde odio magni excepturi soluta...
+        </p>
       </figcaption>
     </figure>
   </v-card>
@@ -50,9 +54,15 @@
 
 <script>
 export default {
+  props: {
+    post: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
     openPost() {
-      const postName = 'post_name'
+      const postName = this.post._id
       this.$router.push(`/category/${postName}`)
     }
   }

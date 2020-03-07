@@ -16,7 +16,9 @@
           </v-hover>
         </v-badge>
         <div class="post__buttons">
-          <v-btn color="#2196f3" class="white--text" large>Primary button</v-btn>
+          <v-btn color="#2196f3" class="white--text" large
+            >Primary button</v-btn
+          >
           <v-btn color="success" large>Default button</v-btn>
         </div>
       </header>
@@ -24,67 +26,77 @@
       <v-divider inset class="mx-auto mb-10"></v-divider>
       <main class="post__description">
         <h4 class="card-title">
-          <strong>My adventure</strong>
+          <strong>{{ post.title }}</strong>
         </h4>
         <h5 class="blue-text">
-          <strong>Photography</strong>
+          <strong>Category</strong>
         </h5>
 
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+        <vue-markdown>{{ post.text }}</vue-markdown>
+
+        <!-- <p class="card-text">
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <h3>Hello</h3>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
         </p>
         <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam.
-        </p>
+          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
+          doloremque laudantium, totam rem aperiam.
+        </p> -->
       </main>
 
       <footer>
         <!-- Form -->
         <CommentForm v-if="canAddComment" @created="createCommenHendler" />
-        <v-snackbar top v-model="snackbar" color="success">{{ textadd }}</v-snackbar>
-        <div class="comments" v-if="true">
-          <Comment v-for="(comment, i) in 4" :key="i" :comment="comment" />
+        <v-snackbar top v-model="snackbar" color="success">{{
+          textadd
+        }}</v-snackbar>
+        <div class="comments" v-if="post.comments.length">
+          <Comment
+            v-for="comment in post.comments"
+            :key="comment"
+            :comment="comment"
+          />
         </div>
-        <v-alert border="bottom" text color="blue" v-else>Комментариев нет ;(</v-alert>
+        <v-alert border="bottom" text color="blue" v-else
+          >Комментариев нет ;(</v-alert
+        >
       </footer>
     </v-sheet>
   </v-container>
@@ -97,6 +109,11 @@ export default {
   components: {
     Comment,
     CommentForm
+  },
+  async asyncData({ store, params }) {
+    const post = await store.dispatch('post/fetchById', params.post)
+    await store.dispatch('post/addView', post) // views
+    return { post: { ...post, views: ++post.views } }
   },
   data: () => ({
     snackbar: false,
