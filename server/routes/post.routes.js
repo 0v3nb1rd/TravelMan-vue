@@ -13,29 +13,31 @@ router.post(
   upload.single('image'),
   ctr.create
 )
-
 router.get(
   '/admin/',
   passport.authenticate('jwt', { session: false }),
   ctr.getAll
 )
-
 router.get(
   '/admin/:id',
   passport.authenticate('jwt', { session: false }),
   ctr.getById
 )
-
 router.put(
   '/admin/:id',
   passport.authenticate('jwt', { session: false }),
   ctr.update
 )
-
 router.delete(
   '/admin/:id',
   passport.authenticate('jwt', { session: false }),
   ctr.remove
+)
+
+router.get(
+  '/admin/get/analytics',
+  passport.authenticate('jwt', { session: false }),
+  ctr.getAnalytics
 )
 
 // Base
