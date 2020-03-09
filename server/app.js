@@ -11,7 +11,7 @@ const keys = require('./keys')
 const app = express()
 
 mongoose
-  .connect(keys.MONGO_URL)
+  .connect(keys.MONGO_URL, { useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected!...'))
   .catch(error => console.log(error))
 
