@@ -62,7 +62,7 @@
     <template v-slot:item.date="{ item }">
       <v-chip>
         <v-icon left small>mdi-clock</v-icon>
-        {{ item.date }}
+        {{ item.date | date() }}
       </v-chip>
     </template>
 

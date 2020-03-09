@@ -4,7 +4,8 @@
       <span class="comment__name">{{ comment.name }}</span>
       <span>
         <v-icon>mdi-clock-outline</v-icon>
-        {{ new Date(comment.date).toLocaleString() }}
+        {{ comment.date | date }}
+        <!-- {{ new Date(comment.date).toLocaleString() }} -->
       </span>
     </div>
     <blockquote class="comment__text blockquote">{{ comment.text }}</blockquote>

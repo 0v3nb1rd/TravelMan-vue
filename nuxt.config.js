@@ -29,7 +29,7 @@ module.exports = {
 
   css: ['~/assets/main.scss'],
 
-  plugins: ['~/plugins/VueMarkdown', '~/plugins/axios'],
+  plugins: ['~/plugins/globals', '~/plugins/axios'],
 
   buildModules: ['@nuxtjs/vuetify'],
 

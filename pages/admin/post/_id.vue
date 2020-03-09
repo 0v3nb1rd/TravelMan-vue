@@ -36,7 +36,8 @@
         </v-chip>
         <v-chip class="ml-3">
           <v-icon left small>mdi-clock</v-icon>
-          {{ new Date(post.date).toLocaleString() }}
+          {{ post.date | date }}
+          <!-- {{ new Date(post.date).toLocaleString() }} -->
         </v-chip>
       </span>
     </v-form>

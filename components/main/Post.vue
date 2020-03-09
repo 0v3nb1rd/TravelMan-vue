@@ -34,8 +34,8 @@
       <v-card-subtitle class="post__meta">
         <span class="post__date">
           <span>
-            {{ new Date(post.date).getDate() }}
-            <em>мая</em>
+            {{ post.date | date('date') }}
+            <em>{{ post.date | date('month') }}</em>
           </span>
         </span>
         <span class="post__category">Путишествие</span>
