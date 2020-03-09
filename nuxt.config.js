@@ -33,7 +33,7 @@ module.exports = {
 
   buildModules: ['@nuxtjs/vuetify'],
 
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
 
   axios: {},
 

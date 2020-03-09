@@ -1,14 +1,12 @@
-
 <template>
   <div class="page-wrap">
     <v-snackbar top v-model="snackbar">{{ message }}</v-snackbar>
 
     <v-breadcrumbs class="mb-2" divider=">" :items="breadcrumbs">
       <template v-slot:item="{ item }">
-        <v-breadcrumbs-item
-          :href="item.href"
-          :disabled="item.disabled"
-        >{{ item.text || post.title }}</v-breadcrumbs-item>
+        <v-breadcrumbs-item :href="item.href" :disabled="item.disabled">{{
+          item.text || post.title
+        }}</v-breadcrumbs-item>
       </template>
     </v-breadcrumbs>
 
@@ -28,7 +26,8 @@
         :disabled="!valid"
         color="primary"
         :loading="loading"
-      >Обновить</v-btn>
+        >Обновить</v-btn
+      >
       <span class="post__text">
         <v-chip>
           <v-icon left small>mdi-eye</v-icon>
