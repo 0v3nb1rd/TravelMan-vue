@@ -30,14 +30,16 @@
       rounded
       :loading="loading"
       type="submit"
-      >Создать</v-btn
-    >
+    >Создать</v-btn>
   </v-form>
 </template>
 
 <script>
 export default {
   layout: 'admin',
+  head: {
+    title: `Создать пользователя | ${process.env.appName}`
+  },
   middleware: ['admin-auth'],
   data: () => ({
     loading: false,
@@ -82,5 +84,6 @@ export default {
 .user-form {
   width: 500px;
   margin: 50px;
-}</style
+}
+</style
 >>

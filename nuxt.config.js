@@ -4,8 +4,8 @@ module.exports = {
   mode: 'universal',
 
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    // titleTemplate: '%s - ' + process.env.npm_package_name,
+    // title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -36,6 +36,10 @@ module.exports = {
   modules: ['@nuxtjs/axios'],
 
   axios: {},
+
+  env: {
+    appName: 'Travel-Man'
+  },
 
   vuetify: {
     customVariables: ['~/assets/variables.scss', '@/sass/variables.sass'],

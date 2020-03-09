@@ -46,6 +46,9 @@
 <script>
 export default {
   layout: 'empty',
+  head: {
+    title: `Вход в админку | ${process.env.appName}`
+  },
   data: () => ({
     loading: false,
     valid: true,

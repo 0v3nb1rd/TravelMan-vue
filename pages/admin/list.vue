@@ -94,6 +94,9 @@
 <script>
 export default {
   layout: 'admin',
+  head: {
+    title: `Список постов | ${process.env.appName}`
+  },
   middleware: ['admin-auth'],
   data: () => ({
     dialog: false,

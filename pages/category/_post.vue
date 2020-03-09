@@ -16,9 +16,7 @@
           </v-hover>
         </v-badge>
         <div class="post__buttons">
-          <v-btn color="#2196f3" class="white--text" large
-            >Primary button</v-btn
-          >
+          <v-btn color="#2196f3" class="white--text" large>Primary button</v-btn>
           <v-btn color="success" large>Default button</v-btn>
         </div>
       </header>
@@ -33,74 +31,20 @@
         </h5>
 
         <vue-markdown>{{ post.text }}</vue-markdown>
-
-        <!-- <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <h3>Hello</h3>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p>
-        <p class="card-text">
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium
-          doloremque laudantium, totam rem aperiam.
-        </p> -->
       </main>
 
       <footer>
         <!-- Form -->
-        <CommentForm
-          v-if="canAddComment"
-          @created="createCommenHendler"
-          :postId="post._id"
-        />
-        <v-snackbar top v-model="snackbar" color="success">{{
+        <CommentForm v-if="canAddComment" @created="createCommenHendler" :postId="post._id" />
+        <v-snackbar top v-model="snackbar" color="success">
+          {{
           textadd
-        }}</v-snackbar>
+          }}
+        </v-snackbar>
         <div class="comments" v-if="post.comments.length">
-          <Comment
-            v-for="comment in post.comments"
-            :key="comment._id"
-            :comment="comment"
-          />
+          <Comment v-for="comment in post.comments" :key="comment._id" :comment="comment" />
         </div>
-        <v-alert border="bottom" text color="blue" v-else
-          >Комментариев нет ;(</v-alert
-        >
+        <v-alert border="bottom" text color="blue" v-else>Комментариев нет ;(</v-alert>
       </footer>
     </v-sheet>
   </v-container>
@@ -113,6 +57,11 @@ export default {
   components: {
     Comment,
     CommentForm
+  },
+  head() {
+    return {
+      title: `${this.post.title} | ${process.env.appName}`
+    }
   },
   async asyncData({ store, params }) {
     const post = await store.dispatch('post/fetchById', params.post)

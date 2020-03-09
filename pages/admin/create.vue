@@ -2,12 +2,7 @@
   <v-form class="user__form mt-5" v-model="valid" ref="form">
     <v-snackbar top v-model="snackbar">{{ message }}</v-snackbar>
     <h1 class="mb-5">Create new post</h1>
-    <v-text-field
-      label="Enter post name"
-      v-model.trim="title"
-      :rules="titleRules"
-      outlined
-    ></v-text-field>
+    <v-text-field label="Enter post name" v-model.trim="title" :rules="titleRules" outlined></v-text-field>
     <v-textarea
       label="Text in format .md or .html"
       v-model.trim="text"
@@ -16,7 +11,7 @@
       outlined
       no-resize
       rows="10"
-      clear-icon=""
+      clear-icon
     ></v-textarea>
 
     <v-file-input
@@ -38,8 +33,7 @@
             color="green"
             :loading="loading"
             type="submit"
-            >Создать пост</v-btn
-          >
+          >Создать пост</v-btn>
           <v-btn color="primary" rounded dark v-on="on">Предпросмотр</v-btn>
         </div>
       </template>
@@ -57,6 +51,9 @@
 
 <script>
 export default {
+  head: {
+    title: `Новый пост | ${process.env.appName}`
+  },
   layout: 'admin',
   middleware: ['admin-auth'],
   data: () => ({
