@@ -35,7 +35,9 @@ module.exports = {
 
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
 
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000/'
+  },
 
   env: {
     appName: 'Travel-Man'
