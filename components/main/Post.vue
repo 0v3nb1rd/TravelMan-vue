@@ -38,7 +38,7 @@
             <em>{{ post.date | date('month') }}</em>
           </span>
         </span>
-        <span class="post__category">Путишествие</span>
+        <span class="post__category">{{ post.category || "Category" }}</span>
       </v-card-subtitle>
       <figcaption class="post__description">
         <h3>{{ post.title }}</h3>

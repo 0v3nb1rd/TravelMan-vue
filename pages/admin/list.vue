@@ -103,6 +103,7 @@ export default {
     headers: [
       // { text: 'ID', value: '_id' },
       { text: 'Title', value: 'title' },
+      { text: 'Category', value: 'category' },
       { text: 'Date', value: 'date' },
       { text: 'Views', value: 'views' },
       { text: 'Comments', value: 'comments' },

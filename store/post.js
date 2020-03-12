@@ -62,13 +62,14 @@ export const actions = {
     }
   },
 
-  async create({ commit }, { title, text, image }) {
+  async create({ commit }, { title, text, image, category }) {
     try {
       const fd = new FormData()
 
       fd.append('title', title)
       fd.append('text', text)
       fd.append('image', image, image.name)
+      fd.append('category', category)
       // return await new Promise(resolve => {
       //   setTimeout(() => {
       //     resolve(console.log('Created!', fd))

@@ -2,6 +2,7 @@
   <v-form class="user__form mt-5" v-model="valid" ref="form">
     <v-snackbar top v-model="snackbar">{{ message }}</v-snackbar>
     <h1 class="mb-5">Create new post</h1>
+
     <v-text-field label="Enter post name" v-model.trim="title" :rules="titleRules" outlined></v-text-field>
     <v-textarea
       label="Text in format .md or .html"
@@ -13,15 +14,21 @@
       rows="10"
       clear-icon
     ></v-textarea>
-
-    <v-file-input
-      flat
-      single-line
-      show-size
-      v-model="files"
-      :rules="titleRules"
-      placeholder="Select your photo"
-    ></v-file-input>
+    <v-row>
+      <v-col>
+        <v-file-input
+          flat
+          single-line
+          show-size
+          v-model="files"
+          :rules="titleRules"
+          placeholder="Select your photo"
+        ></v-file-input>
+      </v-col>
+      <v-col>
+        <v-select @input="setSelected" :items="catList" label="Solo field" solo></v-select>
+      </v-col>
+    </v-row>
 
     <v-dialog class="d-flex justify-space-between" v-model="dialog">
       <template v-slot:activator="{ on }">
@@ -63,9 +70,14 @@ export default {
     valid: true,
     snackbar: false,
     message: '',
+    val: '',
+    catList: ['Путишествие', 'Технологии', 'Психология', 'Здоровье'], // Add more categories
 
     title: '',
     titleRules: [v => !!v || "Post name can't be empty"],
+
+    category: '', //test
+    categoryRules: [v => !!v || "Category can't be empty"],
 
     text: '',
     textRules: [v => !!v || "Text can't be empty"],
@@ -88,12 +100,16 @@ export default {
   }),
 
   methods: {
+    setSelected(val) {
+      this.category = val
+    },
     async validate() {
       if (this.$refs.form.validate()) {
         this.loading = true
         const formData = {
           title: this.title,
           text: this.text,
+          category: this.category,
           image: this.files
         }
         try {
