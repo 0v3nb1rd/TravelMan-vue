@@ -21,6 +21,10 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
+  categoryRu: {
+    type: String,
+    required: true
+  },
   ImageUrl: String,
   comments: [{ type: Schema.Types.ObjectId, ref: 'comments' }]
 })

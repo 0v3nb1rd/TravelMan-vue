@@ -18,7 +18,7 @@ import Paralax from '@/components/main/Paralax'
 
 export default {
   head: {
-    title: `Путишествие | ${process.env.appName}`
+    title: `Технологии | ${process.env.appName}`
   },
   layout: 'category',
   components: {
@@ -27,14 +27,14 @@ export default {
   },
   async asyncData({ store }) {
     const allPosts = await store.dispatch('post/fetch')
-    const posts = allPosts.filter(post => post.category === 'travel')
+    const posts = allPosts.filter(post => post.category === 'technology')
     return { posts }
   },
   data: () => ({
     paralax: {
-      picture: '/category/travel.jpg',
-      category: 'Путишествие',
-      title: 'истории о путешествиях, людях, и жизни за границей'
+      picture: '/category/technology.jpg',
+      category: 'Технологии',
+      title: 'технологии, гаджеты программирование'
     }
   })
 }

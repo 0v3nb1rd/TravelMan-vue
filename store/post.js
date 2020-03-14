@@ -69,7 +69,8 @@ export const actions = {
       fd.append('title', title)
       fd.append('text', text)
       fd.append('image', image, image.name)
-      fd.append('category', category)
+      fd.append('category', category.name)
+      fd.append('categoryRu', category.ru)
       // return await new Promise(resolve => {
       //   setTimeout(() => {
       //     resolve(console.log('Created!', fd))

@@ -25,8 +25,16 @@
           placeholder="Select your photo"
         ></v-file-input>
       </v-col>
+
       <v-col>
-        <v-select @input="setSelected" :items="catList" label="Solo field" solo></v-select>
+        <v-select
+          @input="setSelected"
+          :items="catList"
+          item-text="name"
+          return-object
+          label="Solo field"
+          solo
+        ></v-select>
       </v-col>
     </v-row>
 
@@ -71,8 +79,13 @@ export default {
     snackbar: false,
     message: '',
     val: '',
-    catList: ['Путишествие', 'Технологии', 'Психология', 'Здоровье'], // Add more categories
-
+    // catList: ['Путишествие', 'Технологии', 'Психология', 'Здоровье'], // Add more categories
+    catList: [
+      { name: 'travel', ru: 'Путишествие' },
+      { name: 'technology', ru: 'Технологии' },
+      { name: 'psyhology', ru: 'Психология' },
+      { name: 'helth', ru: 'Здоровье' }
+    ],
     title: '',
     titleRules: [v => !!v || "Post name can't be empty"],
 
@@ -101,6 +114,7 @@ export default {
 
   methods: {
     setSelected(val) {
+      // console.log(val)
       this.category = val
     },
     async validate() {
@@ -110,8 +124,10 @@ export default {
           title: this.title,
           text: this.text,
           category: this.category,
+          // category: { name: 'Nazar', surname: 'Khaylo' },
           image: this.files
         }
+        // console.log(formData)
         try {
           await this.$store.dispatch('post/create', formData)
           this.message = 'Post is olready created.! :)'

@@ -38,7 +38,7 @@
             <em>{{ post.date | date('month') }}</em>
           </span>
         </span>
-        <span class="post__category">{{ post.category || "Category" }}</span>
+        <span class="post__category">{{ post.categoryRu || "Category" }}</span>
       </v-card-subtitle>
       <figcaption class="post__description">
         <h3>{{ post.title }}</h3>
@@ -63,7 +63,9 @@ export default {
   methods: {
     openPost() {
       const postName = this.post._id
-      this.$router.push(`/category/${postName}`)
+      const postCategory = this.post.category
+      this.$router.push(`/${postCategory}/${postName}`)
+      // this.$router.push(`/category/${postName}`)
     }
   }
 }

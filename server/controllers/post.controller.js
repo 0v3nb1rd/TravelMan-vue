@@ -5,7 +5,8 @@ module.exports.create = async (req, res) => {
     title: req.body.title,
     text: req.body.text,
     ImageUrl: `/${req.file.filename}`,
-    category: req.body.category
+    category: req.body.category,
+    categoryRu: req.body.categoryRu
   })
   try {
     await post.save()
