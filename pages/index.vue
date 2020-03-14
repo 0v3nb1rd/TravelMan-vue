@@ -19,7 +19,6 @@ export default {
   },
   async asyncData({ store }) {
     const posts = await store.dispatch('post/fetch')
-    console.log(posts)
     return { posts }
   },
   data: () => ({

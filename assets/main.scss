@@ -145,3 +145,30 @@ ul,
 li {
   list-style: none;
 }
+
+// Main Post Article
+.post-article {
+  margin-top: -64px;
+  text-align: center;
+
+  &__heart {
+    top: -32px;
+  }
+  &__action {
+    position: relative;
+    padding: 4px 0;
+    padding-bottom: 25px;
+    margin-bottom: 5px;
+  }
+  &__buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  &__footer {
+    padding: 2rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
