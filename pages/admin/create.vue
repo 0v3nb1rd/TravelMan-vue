@@ -83,8 +83,8 @@ export default {
     catList: [
       { name: 'travel', ru: 'Путишествие' },
       { name: 'technology', ru: 'Технологии' },
-      { name: 'psyhology', ru: 'Психология' },
-      { name: 'helth', ru: 'Здоровье' }
+      { name: 'psihology', ru: 'Психология' },
+      { name: 'health', ru: 'Здоровье' }
     ],
     title: '',
     titleRules: [v => !!v || "Post name can't be empty"],

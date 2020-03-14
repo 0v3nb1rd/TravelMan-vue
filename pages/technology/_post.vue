@@ -27,13 +27,6 @@
 
           <v-divider inset class="mx-auto mb-10"></v-divider>
           <section class="post__description">
-            <!-- <h4 class="card-title">
-            <strong>{{ post.title }}</strong>
-          </h4>
-          <h5 class="blue-text">
-            <strong>Category</strong>
-            </h5>-->
-
             <vue-markdown>{{ post.text }}</vue-markdown>
           </section>
 
@@ -85,8 +78,8 @@ export default {
     canAddComment: true,
     paralax: {
       picture: '',
-      category: 'Путишествие',
-      title: 'истории о путешествиях, людях, и жизни за границей'
+      category: '',
+      title: ''
     }
   }),
   mounted() {

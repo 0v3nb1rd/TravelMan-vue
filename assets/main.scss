@@ -146,7 +146,7 @@ li {
   list-style: none;
 }
 
-// Main Post Article
+// --> Main Post Article
 .post-article {
   margin-top: -64px;
   text-align: center;
@@ -172,3 +172,10 @@ li {
     margin: 0 auto;
   }
 }
+section.post__description {
+  p {
+    font-size: 21px;
+  }
+}
+
+// -->
