@@ -42,11 +42,8 @@
       </v-card-subtitle>
       <figcaption class="post__description">
         <h3>{{ post.title }}</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-          nesciunt molestiae debitis impedit fugiat itaque hic consequuntur a
-          explicabo, maiores unde odio magni excepturi soluta...
-        </p>
+        <p class="txt-short" v-if="post.text.length > 200">{{ `${post.text.slice(0,200)} ...` }}</p>
+        <p class="txt-origin" v-else>{{ post.text }}</p>
       </figcaption>
     </figure>
   </v-card>
