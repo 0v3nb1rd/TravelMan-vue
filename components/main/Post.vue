@@ -42,8 +42,9 @@
       </v-card-subtitle>
       <figcaption class="post__description">
         <h3>{{ post.title }}</h3>
-        <p class="txt-short" v-if="post.text.length > 200">{{ `${post.text.slice(0,200)} ...` }}</p>
-        <p class="txt-origin" v-else>{{ post.text }}</p>
+        <p class="txt-short txt" v-if="post.text.length > 200">{{ `${cleanHtml.slice(0,200)} ...` }}</p>
+        <!-- <p class="txt-origin txt" v-else>{{ post.text.replace(/<[^>]*>?/gm, '') }}</p> -->
+        <p class="txt-origin txt" v-else>{{ cleanHtml }}</p>
       </figcaption>
     </figure>
   </v-card>
@@ -63,6 +64,11 @@ export default {
       const postCategory = this.post.category
       this.$router.push(`/${postCategory}/${postName}`)
       // this.$router.push(`/category/${postName}`)
+    }
+  },
+  computed: {
+    cleanHtml() {
+      return this.post.text.replace(/<[^>]*>?/gm, '')
     }
   }
 }
@@ -147,7 +153,7 @@ export default {
       font-size: 26px;
       font-weight: 700;
     }
-    p {
+    .txt {
       color: $textDesk;
       font-size: 15px;
       line-height: 1.8em;
@@ -169,7 +175,7 @@ export default {
     .post__description {
       top: 50%;
 
-      p {
+      .txt {
         opacity: 1;
       }
     }
