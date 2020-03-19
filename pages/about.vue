@@ -56,6 +56,14 @@
   </v-container>
 </template>
 
+<script>
+export default {
+  head: {
+    title: `Про нас | ${process.env.appName}`
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .container-wrap {
   max-width: 1170px;
