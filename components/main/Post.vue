@@ -43,7 +43,6 @@
       <figcaption class="post__description">
         <h3>{{ post.title }}</h3>
         <p class="txt-short txt" v-if="post.text.length > 200">{{ `${cleanHtml.slice(0,200)} ...` }}</p>
-        <!-- <p class="txt-origin txt" v-else>{{ post.text.replace(/<[^>]*>?/gm, '') }}</p> -->
         <p class="txt-origin txt" v-else>{{ cleanHtml }}</p>
       </figcaption>
     </figure>

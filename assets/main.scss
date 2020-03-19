@@ -23,6 +23,12 @@ a {
   text-decoration: none;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
+// Other
 .page-enter-active,
 .page-leave-active {
   transition: all 0.3s ease-out;
@@ -139,11 +145,6 @@ a {
     font-size: 22px;
     line-height: 22px;
   }
-}
-
-ul,
-li {
-  list-style: none;
 }
 
 // --> Main Post Article
