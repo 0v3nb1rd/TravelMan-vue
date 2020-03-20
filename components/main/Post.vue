@@ -1,28 +1,4 @@
 <template>
-  <!-- <v-card to="#" class="card">
-    <figure>
-      <v-img
-        :src="card.src"
-        class="white--text align-end card__image"
-        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        height="200px"
-      ></v-img>
-      <v-card-subtitle class="card__meta">
-        <span class="card__date">
-          <span>
-            27
-            <em>мая</em>
-          </span>
-        </span>
-        <span class="card__category">Путишествие</span>
-      </v-card-subtitle>
-      <figcaption class="card__description">
-        <h3>{{ card.title }}</h3>
-        <p>{{ card.description }}</p>
-      </figcaption>
-    </figure>
-  </v-card>-->
-
   <v-lazy v-model="isActive" :options="{
           threshold: .5
         }">

@@ -11,14 +11,15 @@
           :href="icon.href"
           fab
         >
-          <v-icon x-large> {{ icon.icon }} </v-icon>
+          <v-icon x-large>{{ icon.icon }}</v-icon>
         </v-btn>
       </v-row>
     </div>
 
     <div class="container text-center bottom-footer">
       <div class="footer-copy">
-        2019 © <span class="logo-footer logo-letter">Trawel-Man</span>
+        2019 ©
+        <span class="logo-footer logo-letter">Trawel-Man</span>
       </div>
       <p>Копирование и размещение контента на других сайтах - запрещено.</p>
     </div>
@@ -29,11 +30,32 @@
 export default {
   data: () => ({
     social: [
-      { icon: 'mdi-facebook', href: 'http://facebok.com', color: 'blue' },
-      { icon: 'mdi-instagram', href: '#', color: 'purple' },
-      { icon: 'mdi-youtube', href: '#', color: 'red' },
-      { icon: 'mdi-twitter', href: '#', color: 'blue' },
-      { icon: 'mdi-github-circle', href: '#', color: 'black' }
+      {
+        icon: 'mdi-facebook',
+        href: 'https://www.facebook.com/0v3nb1rd',
+        color: 'blue'
+      },
+      {
+        icon: 'mdi-instagram',
+        href: 'https://www.instagram.com/0v3nb1rd/',
+        color: 'purple'
+      },
+      {
+        icon: 'mdi-youtube',
+        href:
+          'https://www.youtube.com/channel/UCbIfwvwtfg6IHYhEqRXpDwA?view_as=subscriber',
+        color: 'red'
+      },
+      {
+        icon: 'mdi-twitter',
+        href: 'https://twitter.com/0v3nb1rd',
+        color: 'blue'
+      },
+      {
+        icon: 'mdi-github',
+        href: 'https://github.com/0v3nb1rd',
+        color: 'white'
+      }
     ]
   })
 }

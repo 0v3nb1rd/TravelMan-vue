@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row dense tag="ul" class="pa-0">
-      <v-col v-for="post in posts" :key="post._id" tag="li" :cols="3">
+      <v-col v-for="post in posts" :key="post._id" tag="li" :cols="12" sm="6" md="4" lg="3">
         <Post :post="post" />
       </v-col>
     </v-row>
@@ -23,5 +23,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped></style>

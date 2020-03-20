@@ -147,7 +147,8 @@ li {
   }
 }
 
-// --> Main Post Article
+// --------> Main Post Article --------------//
+
 .post-article {
   margin-top: -64px;
   text-align: center;
@@ -168,15 +169,89 @@ li {
     right: 0;
   }
   &__footer {
-    padding: 2rem 0;
+    padding: 2rem 0.5rem;
     max-width: 1000px;
     margin: 0 auto;
+    form {
+    }
   }
 }
 section.post__description {
+  // padding: 0 15%;
+  max-width: 1400px;
+  margin: 0 auto;
+  h2 {
+    font-size: 1.9rem;
+    padding: 20px;
+    font-weight: 800;
+  }
+  h3 {
+    color: lighten($color: $dark-blue, $amount: 20%);
+    font-weight: 600;
+    padding: 15px;
+    font-size: 1.6rem;
+  }
   p {
-    font-size: 21px;
+    font-size: 1.4rem;
+    margin: 15px;
+    padding-bottom: 10px;
+    line-height: 1.4;
+    @media screen and (max-width: $break-small) {
+      font-size: 1.1rem;
+    }
+  }
+  ul {
+    max-width: 80%;
+    margin-top: 20px;
+    margin: 0 auto;
+    li {
+      position: relative;
+      padding: 0 0 10px 22px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      text-align: left;
+
+      &::before {
+        content: '\00bb';
+        position: absolute;
+        top: 1px;
+        left: 0;
+        color: $accent;
+        font-weight: 400;
+      }
+    }
+  }
+  img {
+    height: auto;
+    width: 100%;
+  }
+  blockquote {
+    margin: 10px 10px 0;
+    background: lighten($accent, 33%);
+    padding: 60px;
+    position: relative;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.25em;
+    color: #1e528e;
+
+    &::before,
+    &::after {
+      content: '\201C';
+      position: absolute;
+      font-size: 80px;
+      padding: 10px;
+      line-height: 1;
+      color: #1e528e;
+    }
+    &::before {
+      top: 0;
+      left: 10px;
+    }
+    &::after {
+      content: '\201D';
+      right: 10px;
+      bottom: -0.5em;
+    }
   }
 }
-
-// -->
