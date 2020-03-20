@@ -23,30 +23,37 @@
     </figure>
   </v-card>-->
 
-  <v-card @click="openPost" class="post">
-    <figure>
-      <v-img
-        :src="post.ImageUrl"
-        class="white--text align-end post__image"
-        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        height="200px"
-      ></v-img>
-      <v-card-subtitle class="post__meta">
-        <span class="post__date">
-          <span>
-            {{ post.date | date('date') }}
-            <em>{{ post.date | date('month') }}</em>
+  <v-lazy v-model="isActive" :options="{
+          threshold: .5
+        }">
+    <v-card @click="openPost" class="post">
+      <figure>
+        <v-img
+          :src="post.ImageUrl"
+          class="white--text align-end post__image"
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+          height="200px"
+        ></v-img>
+        <v-card-subtitle class="post__meta">
+          <span class="post__date">
+            <span>
+              {{ post.date | date('date') }}
+              <em>{{ post.date | date('month') }}</em>
+            </span>
           </span>
-        </span>
-        <span class="post__category">{{ post.categoryRu || "Category" }}</span>
-      </v-card-subtitle>
-      <figcaption class="post__description">
-        <h3>{{ post.title }}</h3>
-        <p class="txt-short txt" v-if="post.text.length > 200">{{ `${cleanHtml.slice(0,200)} ...` }}</p>
-        <p class="txt-origin txt" v-else>{{ cleanHtml }}</p>
-      </figcaption>
-    </figure>
-  </v-card>
+          <span class="post__category">{{ post.categoryRu || "Category" }}</span>
+        </v-card-subtitle>
+        <figcaption class="post__description">
+          <h3>{{ post.title }}</h3>
+          <p
+            class="txt-short txt"
+            v-if="post.text.length > 200"
+          >{{ `${cleanHtml.slice(0,200)} ...` }}</p>
+          <p class="txt-origin txt" v-else>{{ cleanHtml }}</p>
+        </figcaption>
+      </figure>
+    </v-card>
+  </v-lazy>
 </template>
 
 <script>
@@ -57,6 +64,9 @@ export default {
       required: true
     }
   },
+  data: () => ({
+    isActive: false
+  }),
   methods: {
     openPost() {
       const postName = this.post._id
@@ -64,6 +74,12 @@ export default {
       this.$router.push(`/${postCategory}/${postName}`)
       // this.$router.push(`/category/${postName}`)
     }
+    // onIntersect(entries, observer) {
+    //   this.isIntersecting = entries[0].isIntersecting
+    // }
+  },
+  mounted() {
+    if (this.firstLoad) this.firstLoad = false
   },
   computed: {
     cleanHtml() {
